@@ -67,10 +67,7 @@ class Workspace implements InitializingBean {
 
 		var path = location.toString();
 
-		return !path.contains("${user.home}") //
-				? location //
-				: Path.of(location.toString()
-						.replaceAll("\\$\\{user\\.home\\}", System.getProperty("user.home")));
+		return Path.of(path.replace("${user.home}", System.getProperty("user.home")));
 	}
 
 	/**
